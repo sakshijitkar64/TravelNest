@@ -110,6 +110,9 @@ mongoose
         console.log("MongoDB Connection Failed:");
         console.log(err);
     });
+    app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 // Start Server
 app.listen(8080, () => {
