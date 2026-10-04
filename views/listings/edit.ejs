@@ -1,0 +1,221 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+<div class="row">
+  <div class="col-8 offset-2">
+
+    <br><br>
+
+    <h3>Edit your Listing</h3>
+
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>?_method=PUT"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+
+      <!-- TITLE -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+
+        <input
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          required
+          pattern="[A-Za-z][A-Za-z0-9 ,.]{2,}"
+          title="Please enter a valid title."
+        />
+
+        <div class="valid-feedback">
+          Title Looks good!
+        </div>
+
+        <div class="invalid-feedback">
+          Please enter a title
+        </div>
+      </div>
+
+
+      <!-- DESCRIPTION -->
+      <div class="mb-3">
+        <label for="description" class="form-label">
+          Description
+        </label>
+
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+          minlength="10"
+          title="Please write a proper description."
+        ><%= listing.description %></textarea>
+
+        <div class="invalid-feedback">
+          Please enter description
+        </div>
+      </div>
+
+
+      <!-- IMAGE -->
+      <div class="mb-3">
+
+        <label for="image" class="form-label">
+          Change Image
+        </label>
+
+        <input
+          name="listing[image]"
+          type="file"
+          id="imageInput"
+          accept="image/png,image/jpeg,image/jpg"
+          class="form-control"
+        />
+
+        <!-- CURRENT IMAGE -->
+        <div class="mt-3">
+
+          <p class="text-muted">
+            Current Image:
+          </p>
+
+          <img
+            id="imagePreview"
+            src="<%= listing.image %>"
+            alt="Current listing image"
+            style="
+              width: 250px;
+              height: 180px;
+              object-fit: cover;
+              border-radius: 10px;
+            "
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- PRICE + COUNTRY -->
+      <div class="row">
+
+        <!-- PRICE -->
+        <div class="col-md-4">
+
+          <div class="mb-3">
+
+            <label for="price" class="form-label">
+              Price
+            </label>
+
+            <input
+              name="listing[price]"
+              value="<%= listing.price %>"
+              type="number"
+              class="form-control"
+              required
+              min="0"
+            />
+
+            <div class="invalid-feedback">
+              Please enter a valid price
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- COUNTRY -->
+        <div class="col-md-8">
+
+          <div class="mb-3">
+
+            <label for="country" class="form-label">
+              Country
+            </label>
+
+            <input
+              name="listing[country]"
+              value="<%= listing.country %>"
+              type="text"
+              class="form-control"
+              required
+              pattern="[A-Za-z ]{2,}"
+              title="Please enter a valid country name."
+            />
+
+            <div class="invalid-feedback">
+              Please enter Country
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- LOCATION -->
+      <div class="mb-3">
+
+        <label for="location" class="form-label">
+          Location
+        </label>
+
+        <input
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+          pattern="[A-Za-z0-9 ,.-]{2,}"
+          title="Please enter a valid location."
+        />
+
+        <div class="invalid-feedback">
+          Enter location of place
+        </div>
+
+      </div>
+
+
+      <!-- EDIT BUTTON -->
+      <div class="text-center mt-4 mb-5">
+
+        <button
+          type="submit"
+          class="btn btn-primary edit-btn"
+        >
+          Edit Listing
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- IMAGE PREVIEW SCRIPT -->
+<script>
+
+  const imageInput = document.getElementById("imageInput");
+  const imagePreview = document.getElementById("imagePreview");
+
+  imageInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (file) {
+
+      imagePreview.src = URL.createObjectURL(file);
+
+    }
+
+  });
+
+</script>

@@ -1,0 +1,78 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+<div class="row mt-3 justify-content-center">
+
+    <div class="col-4 signup-card">
+
+        <h2>SignUp For TravelNest</h2>
+
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+
+                <input 
+                    name="username" 
+                    id="username" 
+                    type="text" 
+                    class="form-control" 
+                    required
+                />
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+
+                <input 
+                    name="email" 
+                    id="email" 
+                    type="email" 
+                    class="form-control" 
+                    required
+                />
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+
+                <input 
+                    name="password" 
+                    id="password" 
+                    type="password" 
+                    class="form-control" 
+                    required
+                />
+            </div>
+
+            <button class="btn-success">SignUp</button>
+
+            <div class="social-login">
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <a href="/signup" class="social-btn google-btn">
+                    Continue with Google
+                </a>
+
+                <a href="/signup" class="social-btn facebook-btn">
+                    Continue with Facebook
+                </a>
+
+            </div>
+
+            <h6>
+                Already Have an Account?
+                <a href="/login">Login</a>
+            </h6>
+
+        </form>
+
+    </div>
+
+</div>

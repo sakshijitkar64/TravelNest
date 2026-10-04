@@ -1,0 +1,38 @@
+<% layout('/layouts/boilerplate.ejs') -%> 
+<div class="listings-page"> 
+  <h1>All Listings</h1>
+  <div class="listing-grid"> 
+     <% for(let listing of allListings) { %> 
+            <a href="/listings/<%=listing._id%>" class="listing-links">
+            <div class="listing-card"> 
+                <div class="listing-image-container"> 
+                    <img 
+                        src="<%= listing.image %>" 
+                        class="listing-image" 
+                        alt="<%= listing.title %>"> 
+                    <button class="favorite-button"> 
+                        <i class="fa-regular fa-heart"></i> 
+                    </button></div> 
+ 
+                <div class="listing-details"> 
+ 
+                    <h2><%= listing.title %></h2> 
+ 
+                    <p class="listing-location"> 
+                        Explore this beautiful stay 
+                    </p> 
+ 
+                    <p class="listing-price"> 
+                        ₹<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                        <span>/ guest</span> 
+                    </p> 
+ 
+                </div> 
+ 
+            </div> 
+            </a>
+        <% } %> 
+ 
+    </div> 
+</div>
+

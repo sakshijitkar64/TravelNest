@@ -1,0 +1,155 @@
+<nav class="navbar navbar-expand-lg bg-white tn-navbar">
+    <div class="container-fluid px-4">
+
+        <!-- Logo -->
+        <a class="navbar-brand tn-logo" href="/listings">
+            <img src="/css/images/logo.png" alt="TravelNest Logo">
+            TravelNest
+        </a>
+
+        <!-- Mobile Menu -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#travelNavbar"
+            aria-controls="travelNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="travelNavbar">
+
+            <!-- Categories -->
+            <ul class="navbar-nav tn-categories mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link tn-category active" href="/listings">
+                        <span class="tn-icon">🌍</span>
+                        <span>All</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link tn-category" href="/listings">
+                        <span class="tn-icon">🏠</span>
+                        <span>Homes</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link tn-category" href="/listings">
+                        <span class="tn-icon">🎈</span>
+                        <span>Experiences</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link tn-category" href="/listings">
+                        <span class="tn-icon">🛎️</span>
+                        <span>Services</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right Side -->
+            <div class="tn-right-nav">
+
+                <a href="/listings/new" class="tn-host">
+                    Become a host
+                </a>
+
+                <button class="tn-round-btn" type="button">
+                    🌐
+                </button>
+
+                <!-- User Menu -->
+                <div class="dropdown">
+
+                    <button
+                        class="tn-menu-btn"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        ☰
+                    </button>
+
+                   <ul class="dropdown-menu dropdown-menu-end tn-user-menu">
+                     <% if(!currentUser) { %> <li>
+            <a class="nav-link" href="/signup">signup</a>
+        </li>
+
+        <li>
+            <a class="nav-link" href="/login">Log in</a>
+        </li>
+    <% } %>
+
+    <% if(currentUser) { %>
+        <li>
+            <a class="nav-link" href="/logout">Log out</a>
+        </li>
+    <% } %>
+
+</ul>
+                </div>
+             </div>
+         </div>
+    </div>
+</nav>
+
+
+<!-- SEARCH -->
+
+<div class="container tn-search-container col-8" id="travelSearch">
+
+   <form class="tn-search" action="/listings" method="GET">
+
+    <div class="tn-search-item">
+        <small>Where</small>
+        <input
+            type="text"
+            name="location"
+            placeholder="Search destinations"
+        >
+    </div>
+
+    <div class="tn-search-item">
+        <small>When</small>
+        <input
+            type="text"
+            name="date"
+            placeholder="Add dates"
+        >
+    </div>
+
+    <div class="tn-search-item">
+        <small>Who</small>
+        <input
+            type="text"
+            name="guests"
+            placeholder="Add guests"
+            min="1"
+        >
+    </div>
+
+    <button class="tn-search-btn" type="submit">
+        🔍
+    </button>
+
+</form>
+
+</div>
+<script>
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 80) {
+            document.body.classList.add("scrolled");
+        } else {
+            document.body.classList.remove("scrolled");
+        }
+
+    });
+</script>
